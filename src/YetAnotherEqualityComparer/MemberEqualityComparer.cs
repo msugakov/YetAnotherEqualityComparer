@@ -48,12 +48,22 @@
             return this;
         }
 
+        public bool Equals(T x, object y)
+        {
+            if (y == null)
+            {
+                return TypeTester<T>.IsNull(x);
+            }
+
+            return (y is T) && Equals(x, (T)y);
+        }
+
         public bool Equals(T x, T y)
         {
             VerifyHaveMembersSetup();
 
-            bool xIsNull = NullTester<T>.IsNull(x);
-            bool yIsNull = NullTester<T>.IsNull(y);
+            bool xIsNull = TypeTester<T>.IsNull(x);
+            bool yIsNull = TypeTester<T>.IsNull(y);
 
             if (xIsNull && yIsNull)
             {
@@ -63,6 +73,11 @@
             if (xIsNull || yIsNull)
             {
                 return false;
+            }
+
+            if (TypeTester<T>.ReferenceEquals(x, y))
+            {
+                return true;
             }
 
             bool result = false;
@@ -84,7 +99,7 @@
         {
             VerifyHaveMembersSetup();
 
-            if (NullTester<T>.IsNull(obj))
+            if (TypeTester<T>.IsNull(obj))
             {
                 return 0;
             }

@@ -41,7 +41,7 @@
   <ItemGroup>
     <Compile Include="GetHashCodeBehavior.cs" />
     <Compile Include="Implementation\MemberSetup.cs" />
-    <Compile Include="Implementation\NullTester.cs" />
+    <Compile Include="Implementation\TypeTester.cs" />
     <Compile Include="MemberEqualityComparer.cs" />
     <Compile Include="MemberEqualityComparerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

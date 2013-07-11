@@ -7,7 +7,7 @@
     using System.Reflection;
     using System.Text;
 
-    public class NullTester<T>
+    public class TypeTester<T>
     {
         private static readonly TypeInfoContainer TypeInfo = new TypeInfoContainer(typeof(T));
 
@@ -24,6 +24,11 @@
             }
 
             return false;
+        }
+
+        public static bool ReferenceEquals(T x, T y)
+        {
+            return !TypeInfo.IsValueType && object.ReferenceEquals(x, y);
         }
 
         internal class TypeInfoContainer

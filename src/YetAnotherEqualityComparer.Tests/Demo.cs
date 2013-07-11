@@ -1,9 +1,10 @@
-YetAnotherEqualityComparer
-==========================
-Yet Another member Equality Comparer for .NET
-
-## Problem ##
-Do you often have to override `Equals` and `GetHashCode` in order to compare objects based on its members?
+﻿namespace YetAnotherEqualityComparer.Tests
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Xunit;
 
     public class MyOldType
     {
@@ -42,11 +43,6 @@ Do you often have to override `Equals` and `GetHashCode` in order to compare obj
         }
     }
 
-If you've done this a number of times you might feel that enumerating the same fields in both methods is not the right thing. Maintaining the same list of members in both methods as type grows may be a bit of pain. And imagine consequences if in `GetHashCode` you've mistaken and there's used hash code of `NotImportantString` instead of `ImportantString` or you forgot to take case-invariant hash code.
-
-## Solution ##
-This small library allows you to setup members list only once per type and have Equals and GetHashCode implemented in terms of this setup.
-
     public class MyNewType
     {
         private static readonly MemberEqualityComparer<MyNewType> Comparer = new MemberEqualityComparer<MyNewType>()
@@ -73,6 +69,52 @@ This small library allows you to setup members list only once per type and have 
         }
     }
 
-That's all you need to do, `MemberEqualityComparer` takes care about implementation.
+    public class Demo
+    {
+        [Fact]
+        public void DoDemo()
+        {
+            var oldX = new MyOldType
+            {
+                ImportantNullableInt = 50,
+                ImportantDate = new DateTime(2000, 1, 1, 0, 0, 0),
+                ImportantString = "test",
+                NotImportantString = "does not matter"
+            };
 
-Additionally `MemberEqualityComparer<T>` acts as `IEqualityComparer<T>` so you may use it to compare types you can't change, value types (`DateTime`, `TimeSpan`, nullables and your own structs) and anonymous types.
+            var oldY = new MyOldType
+            {
+                ImportantNullableInt = 50,
+                ImportantDate = new DateTime(2000, 1, 1, 0, 0, 0),
+                ImportantString = "TEST",
+                NotImportantString = "still does not matter"
+            };
+
+            Assert.True(oldX.Equals(oldY));
+
+            Assert.Equal(oldX.GetHashCode(), oldY.GetHashCode());
+
+            var newX = new MyNewType
+            {
+                ImportantNullableInt = 50,
+                ImportantDate = new DateTime(2000, 1, 1, 0, 0, 0),
+                ImportantString = "test",
+                NotImportantString = "does not matter"
+            };
+
+            var newY = new MyNewType
+            {
+                ImportantNullableInt = 50,
+                ImportantDate = new DateTime(2000, 1, 1, 0, 0, 0),
+                ImportantString = "TEST",
+                NotImportantString = "still does not matter"
+            };
+
+            Assert.True(newX.Equals(newY));
+
+            Assert.Equal(newX.GetHashCode(), newY.GetHashCode());
+
+            Assert.True(EqualityComparer<MyNewType>.Default.Equals(null, null));
+        }
+    }
+}

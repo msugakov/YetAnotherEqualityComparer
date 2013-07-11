@@ -7,7 +7,7 @@
     using Xunit;
     using YetAnotherEqualityComparer.Implementation;
 
-    public class NullTesterTests
+    public class TypeTesterTests
     {
         internal enum TestEnum
         {
@@ -44,7 +44,7 @@
 
         private void TestIsNullImpl<T>(T value, bool expectedResult)
         {
-            Assert.Equal(expectedResult, NullTester<T>.IsNull(value));
+            Assert.Equal(expectedResult, TypeTester<T>.IsNull(value));
         }
     }
 }

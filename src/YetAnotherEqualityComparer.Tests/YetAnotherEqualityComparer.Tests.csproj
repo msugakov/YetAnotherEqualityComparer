@@ -51,10 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auxiliary\DefaultEqualityComparerTests.cs" />
+    <Compile Include="Auxiliary\IsOperatorTests.cs" />
     <Compile Include="Auxiliary\ObjectTests.cs" />
     <Compile Include="Auxiliary\ValueTypeTests.cs" />
+    <Compile Include="Demo.cs" />
     <Compile Include="MemberEqualityComparerTests.cs" />
-    <Compile Include="NullTesterTests.cs" />
+    <Compile Include="TypeTesterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
