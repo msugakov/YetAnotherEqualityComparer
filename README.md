@@ -45,7 +45,7 @@ Do you often have to override `Equals` and `GetHashCode` in order to compare obj
 If you've done this a number of times you might feel that enumerating the same fields in both methods is not the right thing. Maintaining the same list of members in both methods as type grows may be a bit of pain. And imagine consequences if in `GetHashCode` you've mistaken and there's used hash code of `NotImportantString` instead of `ImportantString` or you forgot to take case-invariant hash code.
 
 ## Solution ##
-This small library allows you to setup members list only once per type and have Equals and GetHashCode implemented in terms of this setup.
+This small library allows you to setup members list only once per type and have `Equals` and `GetHashCode` implemented in terms of this setup.
 
     public class MyNewType
     {
@@ -73,6 +73,6 @@ This small library allows you to setup members list only once per type and have 
         }
     }
 
-That's all you need to do, `MemberEqualityComparer` takes care about implementation.
+That's all you need to do, `MemberEqualityComparer` takes care about the rest.
 
 Additionally `MemberEqualityComparer<T>` acts as `IEqualityComparer<T>` so you may use it to compare types you can't change, value types (`DateTime`, `TimeSpan`, nullables and your own structs) and anonymous types.
