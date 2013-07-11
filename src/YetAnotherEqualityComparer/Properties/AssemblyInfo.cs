@@ -9,9 +9,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("This library allows to define IEqualityComparer on arbitrary types " +
                                "to compare objects based on their members. Members are explicitly configured " +
                                "with strongly-typed fluent API. Members and are not limited to properties, " +
-                               "these can be fields or even methods. The library allows to implement overrides " +
-                               "of Equals and GetHashCode by using provided MemberEqualityComparer type minimizing " +
-                               "boilerplate.")]
+                               "fields and even methods can be used. The library allows to implement overrides " +
+                               "of Equals and GetHashCode by using provided MemberEqualityComparer type thus" +
+                               "minimizing boilerplate.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("M. Sugakov")]
 [assembly: AssemblyProduct("YetAnotherEqualityComparer")]
