@@ -8,10 +8,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("YetAnotherEqualityComparer")]
 [assembly: AssemblyDescription("This library allows to define IEqualityComparer on arbitrary types " +
                                "to compare objects based on their members. Members are explicitly configured " +
-                               "with strongly-typed fluent API. Members and are not limited to properties, " +
-                               "fields and even methods can be used. The library allows to implement overrides " +
-                               "of Equals and GetHashCode by using provided MemberEqualityComparer type thus" +
-                               "minimizing boilerplate.")]
+                               "with strongly-typed fluent API. Members are not limited to properties but " +
+                               "fields and methods can also be used for comparison. " +
+                               "The library allows to implement overrides of Equals and GetHashCode methods " +
+                               "by using provided MemberEqualityComparer type thus minimizing boilerplate.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("M. Sugakov")]
 [assembly: AssemblyProduct("YetAnotherEqualityComparer")]
