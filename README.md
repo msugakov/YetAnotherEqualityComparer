@@ -76,3 +76,6 @@ This small library allows you to setup members list only once per type and have 
 That's all you need to do, `MemberEqualityComparer` takes care about the rest.
 
 Additionally `MemberEqualityComparer<T>` acts as `IEqualityComparer<T>` so you may use it to compare types you can't change, value types (`DateTime`, `TimeSpan`, nullables and your own structs) and anonymous types.
+
+## Installation ##
+The package is available as NuGet https://www.nuget.org/packages/YetAnotherEqualityComparer/

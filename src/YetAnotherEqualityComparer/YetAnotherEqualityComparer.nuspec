@@ -2,7 +2,7 @@
 <package>
     <metadata>
         <id>$id$</id>
-        <version>$version$</version>
+        <version>1.0.0-alpha</version>
         <title>$title$</title>
         <authors>$author$</authors>
         <owners>$author$</owners>
@@ -10,11 +10,9 @@
         <projectUrl>https://github.com/alabax/YetAnotherEqualityComparer</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>$description$</description>
+        <summary>C# configurable member based EqualityComparer</summary>
         <!--<releaseNotes>Summary of changes made in this release of the package.</releaseNotes>-->
         <copyright>Copyright $author$ 2013</copyright>
         <tags>Equals GetHashCode IEqualityComparer</tags>
     </metadata>
-    <files>
-        <file src="bin\*\$id$.xml" target="lib\net40" />
-    </files>
 </package>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+    DefaultTargets="Package"
+    ToolsVersion="4.0">
+    
+    <PropertyGroup>
+        <Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
+        <NuGet>..\src\.nuget\nuget.exe</NuGet>
+        <Solution>..\src\YetAnotherEqualityComparer.sln</Solution>
+        <Project>..\src\YetAnotherEqualityComparer\YetAnotherEqualityComparer.csproj</Project>
+        <PackageDir>artifacts\package\</PackageDir>
+    </PropertyGroup>
+
+    <Target Name="Build">
+        <MSBuild Projects="$(Solution)" Properties="Configuration=$(Configuration)" />
+    </Target>
+    
+    <Target Name="Package" DependsOnTargets="Build">
+        <RemoveDir Directories="$(PackageDir)" />
+        <MakeDir Directories="$(PackageDir)" />
+    
+        <Exec Command="$(NuGet) pack $(Project) -OutputDirectory $(PackageDir) -Properties Configuration=$(Configuration)" />
+    </Target>
+    
+    <Target Name="Push" DependsOnTargets="Package">
+        <ItemGroup>
+            <Package Include="$(PackageDir)*.nupkg" />
+        </ItemGroup>
+        
+        <Exec Command="$(NuGet) push %(Package.Identity)" />
+    </Target>
+</Project>
