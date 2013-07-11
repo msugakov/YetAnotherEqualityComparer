@@ -20,7 +20,7 @@
 
             if (TypeInfo.IsNullable)
             {
-                return (bool)TypeInfo.NullableEqualsMethod.Invoke(null, new object[] { value, null });
+                return value == null;
             }
 
             return false;
@@ -37,28 +37,12 @@
             {
                 IsValueType = type.IsValueType;
 
-                Type underlyingNullableType = Nullable.GetUnderlyingType(typeof(T));
-
-                if (underlyingNullableType != null)
-                {
-                    IsNullable = true;
-
-                    NullableEqualsMethod =
-                        ((MethodCallExpression)
-                            ((Expression<Func<bool>>)
-                                (() => Nullable.Equals<int>(null, null)))
-                            .Body)
-                            .Method
-                            .GetGenericMethodDefinition()
-                            .MakeGenericMethod(underlyingNullableType);
-                }
+                IsNullable = Nullable.GetUnderlyingType(typeof(T)) != null;
             }
 
             public bool IsValueType { get; private set; }
 
             public bool IsNullable { get; private set; }
-
-            public MethodInfo NullableEqualsMethod { get; private set; }
         }
     }
 }
