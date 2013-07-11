@@ -174,21 +174,13 @@
 
                 unchecked
                 {
-                    hashCode = hashCode ^ (memberHashCode & 0xFF);
+                    hashCode = (hashCode ^ (memberHashCode & 0xFF)) * HashPrime;
 
-                    hashCode *= HashPrime;
+                    hashCode = (hashCode ^ ((memberHashCode >> 8) & 0xFF)) * HashPrime;
 
-                    hashCode = hashCode ^ ((memberHashCode >> 8) & 0xFF);
+                    hashCode = (hashCode ^ ((memberHashCode >> 16) & 0xFF)) * HashPrime;
 
-                    hashCode *= HashPrime;
-
-                    hashCode = hashCode ^ ((memberHashCode >> 16) & 0xFF);
-
-                    hashCode *= HashPrime;
-
-                    hashCode = hashCode ^ ((memberHashCode >> 24) & 0xFF);
-
-                    hashCode *= HashPrime;
+                    hashCode = (hashCode ^ ((memberHashCode >> 24) & 0xFF)) * HashPrime;
                 }
             }
 
