@@ -6,11 +6,16 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("YetAnotherEqualityComparer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("This library allows to define IEqualityComparer on arbitrary types " +
+                               "to compare objects based on their members. Members are explicitly configured " +
+                               "with strongly-typed fluent API. Members and are not limited to properties, " +
+                               "these can be fields or even methods. The library allows to implement overrides " +
+                               "of Equals and GetHashCode by using provided MemberEqualityComparer type minimizing " +
+                               "boilerplate.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("M. Sugakov")]
 [assembly: AssemblyProduct("YetAnotherEqualityComparer")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCopyright("Copyright © M. Sugakov 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
