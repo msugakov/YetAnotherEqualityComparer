@@ -77,5 +77,11 @@ That's all you need to do, `MemberEqualityComparer` takes care about the rest.
 
 Additionally `MemberEqualityComparer<T>` acts as `IEqualityComparer<T>` so you may use it to compare types you can't change, value types (`DateTime`, `TimeSpan`, nullables and your own structs) and anonymous types.
 
+## Alternatives ##
+
+There also exist more advanced libraries able to provide not only `IEqualityComparer<T>` but `IComparer<T>` also. Be sure to check those too:
+1. [ComparerExtensions](https://github.com/jehugaleahsa/ComparerExtensions)
+2. [Comparers (by Stephen Cleary)](http://comparers.codeplex.com/)
+
 ## Installation ##
 The package is available as NuGet https://www.nuget.org/packages/YetAnotherEqualityComparer/
