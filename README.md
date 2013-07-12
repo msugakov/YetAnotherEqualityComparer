@@ -80,6 +80,7 @@ Additionally `MemberEqualityComparer<T>` acts as `IEqualityComparer<T>` so you m
 ## Alternatives ##
 
 There also exist more advanced libraries able to provide not only `IEqualityComparer<T>` but `IComparer<T>` also. Be sure to check those too:
+
 1. [ComparerExtensions](https://github.com/jehugaleahsa/ComparerExtensions)
 2. [Comparers (by Stephen Cleary)](http://comparers.codeplex.com/)
 
